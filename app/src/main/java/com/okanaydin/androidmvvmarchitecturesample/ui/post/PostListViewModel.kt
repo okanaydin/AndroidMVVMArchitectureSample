@@ -28,6 +28,11 @@ class PostListViewModel: BaseViewModel(){
         loadPosts()
     }
 
+    override fun onCleared() {
+        super.onCleared()
+        subscription.dispose()
+    }
+
     private fun loadPosts(){
         subscription = postApi.getPosts()
             .subscribeOn(Schedulers.io())
