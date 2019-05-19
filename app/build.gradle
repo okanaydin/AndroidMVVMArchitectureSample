@@ -39,4 +39,10 @@ dependencies {
 
     //LiveData & ViewModel
     implementation "androidx.lifecycle:lifecycle-extensions:${libraries.lifecycle_ext_version}"
+
+    //Retrofit2
+    implementation "com.squareup.retrofit2:retrofit:${libraries.retrofit2_version}"
+    implementation "com.squareup.retrofit2:adapter-rxjava2:${libraries.retrofit2_version}"
+    implementation "com.squareup.retrofit2:converter-moshi:${libraries.retrofit2_version}"
+
 }
