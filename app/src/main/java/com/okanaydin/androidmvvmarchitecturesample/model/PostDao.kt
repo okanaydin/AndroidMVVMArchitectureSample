@@ -1,7 +1,8 @@
 package com.okanaydin.androidmvvmarchitecturesample.model
 
-import androidx.room.Entity
-import androidx.room.PrimaryKey
+import androidx.room.Dao
+import androidx.room.Insert
+import androidx.room.Query
 
 
 /**
@@ -10,15 +11,15 @@ import androidx.room.PrimaryKey
 │ ─────────────────────────── │
 │ okan.aydin@isik.edu.tr      │
 │ ─────────────────────────── │
-│ 2019-05-20 - 01:36          │
+│ 2019-05-20 - 04:14          │
 └─────────────────────────────┘
  */
 
-@Entity
-data class Post(
-    val userId: Int,
-    @field:PrimaryKey
-    val id: Int,
-    val title: String,
-    val body: String
-)
+@Dao
+interface PostDao {
+    @get:Query("SELECT * FROM post")
+    val all: List<Post>
+
+    @Insert
+    fun insertAll(vararg posts: Post)
+}

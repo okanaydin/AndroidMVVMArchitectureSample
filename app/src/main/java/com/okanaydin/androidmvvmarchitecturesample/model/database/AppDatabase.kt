@@ -1,7 +1,9 @@
-package com.okanaydin.androidmvvmarchitecturesample.model
+package com.okanaydin.androidmvvmarchitecturesample.model.database
 
-import androidx.room.Entity
-import androidx.room.PrimaryKey
+import androidx.room.Database
+import androidx.room.RoomDatabase
+import com.okanaydin.androidmvvmarchitecturesample.model.Post
+import com.okanaydin.androidmvvmarchitecturesample.model.PostDao
 
 
 /**
@@ -10,15 +12,11 @@ import androidx.room.PrimaryKey
 │ ─────────────────────────── │
 │ okan.aydin@isik.edu.tr      │
 │ ─────────────────────────── │
-│ 2019-05-20 - 01:36          │
+│ 2019-05-20 - 04:14          │
 └─────────────────────────────┘
  */
 
-@Entity
-data class Post(
-    val userId: Int,
-    @field:PrimaryKey
-    val id: Int,
-    val title: String,
-    val body: String
-)
+@Database(entities = arrayOf(Post::class), version = 1)
+abstract class AppDatabase : RoomDatabase() {
+    abstract fun postDao(): PostDao
+}
